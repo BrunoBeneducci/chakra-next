@@ -1,6 +1,5 @@
-import { Box, Text, Link, Icon, LinkProps as ChakraLinkProps } from "@chakra-ui/react";
-import { RiContactsLine, RiDashboardLine } from "react-icons/ri";
-import { ElementType, ReactNode } from "toasted-notes/node_modules/@types/react";
+import { Text, Link, Icon, LinkProps as ChakraLinkProps } from "@chakra-ui/react";
+import { ElementType } from "toasted-notes/node_modules/@types/react";
 
 interface NavLinkProps extends ChakraLinkProps {
     icon: ElementType;

@@ -5,7 +5,7 @@ interface ButtonProps extends ChakraButtonProps {
     route?: string;
 }
 
-export const PrimaryButton = ({ text, route, ...rest }: ButtonProps) => {
+export function PrimaryButton({ text, route, ...rest }: ButtonProps) {
     return (
         <Button 
             // bg="brand-primary.500"

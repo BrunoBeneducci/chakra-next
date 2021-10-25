@@ -3,8 +3,8 @@ import { useRouter } from 'next/router'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
-import { PrimaryButton } from '../components/Button';
-import { Input } from '../components/Input';
+import { PrimaryButton } from '../components/atoms/Button';
+import { Input } from '../components/atoms/Input';
 
 import { Flex, Stack } from '@chakra-ui/react';
 

@@ -1,6 +1,6 @@
 import { Box, Flex, Heading, List, ListItem, Stack, Link, Text } from "@chakra-ui/react";
-import { Header } from "../../components/Header";
-import { Sidebar } from "../../components/Sidebar";
+import { Header } from "../../components/organisms/Header";
+import { Sidebar } from "../../components/organisms/Sidebar";
 
 type Post = {
     id: number;

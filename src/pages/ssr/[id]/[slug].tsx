@@ -3,8 +3,8 @@ import { GetServerSideProps } from "next";
 import Head from 'next/head';
 
 import { Box, Flex, Text, Heading } from "@chakra-ui/react";
-import { Header } from "../../../components/Header";
-import { Sidebar } from "../../../components/Sidebar";
+import { Header } from "../../../components/organisms/Header";
+import { Sidebar } from "../../../components/organisms/Sidebar";
 
 type Content = {
     title: string;
