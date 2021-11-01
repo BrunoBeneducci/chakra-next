@@ -1,8 +1,9 @@
+import { useRouter } from 'next/router'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { PrimaryButton } from '../components/atoms/Button';
 import { Input } from '../components/atoms/Input';
-import { Flex, Stack } from '@chakra-ui/react';
+import { Flex, Stack, Button } from '@chakra-ui/react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -18,6 +19,8 @@ const signInFormchema = yup.object().shape({
 })
 
 const Home: NextPage = () => {
+  const router = useRouter();
+
   const {register, handleSubmit, formState} = useForm({
     resolver: yupResolver(signInFormchema)
   });
@@ -27,7 +30,7 @@ const Home: NextPage = () => {
     await new Promise(resolve => setTimeout(resolve, 2000));
 
     console.log(data);
-    // router.push('/dashboard');
+    router.push('/dashboard');
   }
 
   return (
@@ -60,7 +63,7 @@ const Home: NextPage = () => {
               label="E-mail"
               error={errors.email}
               {...register('email')}
-              />
+            />
 
             <Input
               nameText="password"
