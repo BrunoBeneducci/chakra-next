@@ -14,7 +14,6 @@ export function ActiveLink({ children, ...rest }:ActiveLinkProps) {
 
     if(asPath.startsWith(String(rest.href)) || asPath.startsWith(String(rest.as) )) {
         isActive = true;
-        console.log('! shouldMatchExactHref !');
     }
 
     return (

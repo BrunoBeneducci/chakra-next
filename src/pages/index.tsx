@@ -1,24 +1,33 @@
-import { useState } from 'react';
-import { useRouter } from 'next/router'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-
 import { PrimaryButton } from '../components/atoms/Button';
 import { Input } from '../components/atoms/Input';
-
 import { Flex, Stack } from '@chakra-ui/react';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+
+interface SignInFormData {
+  email: string;
+  password: string;
+}
+
+const signInFormchema = yup.object().shape({
+  email: yup.string().required('Mensagem de campo obrigatório').email('Mensagem de email inválido'),
+  password: yup.string().required('Mensagem de campo obrigatório').min(6, 'Sua senha deve conter no mínimo 6 caracteres'),
+})
 
 const Home: NextPage = () => {
-  const router = useRouter();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const {register, handleSubmit, formState} = useForm({
+    resolver: yupResolver(signInFormchema)
+  });
+  const { errors } = formState;
 
-  const handleSubmit = (e:any) => {
-    e.preventDefault();
+  const handleSignIn: SubmitHandler<SignInFormData> = async (data) => {
+    await new Promise(resolve => setTimeout(resolve, 2000));
 
-    if (email.length > 0 && password.length > 0) {
-      router.push('/dashboard')
-    }
+    console.log(data);
+    // router.push('/dashboard');
   }
 
   return (
@@ -42,15 +51,27 @@ const Home: NextPage = () => {
           justify="center"
           borderRadius="8px"
           flexDir="column"
-          onSubmit={handleSubmit}>
+          onSubmit={handleSubmit(handleSignIn)}>
 
           <Stack spacing="4">
-            <Input type="email" name="email" label="E-mail" onChange={e => setEmail(e.target.value)} />
-            <Input type="password" name="password" label="Senha" onChange={e => setPassword(e.target.value)} />
+            <Input
+              nameText="email"
+              type="email"
+              label="E-mail"
+              error={errors.email}
+              {...register('email')}
+              />
+
+            <Input
+              nameText="password"
+              type="password"
+              label="Senha"
+              error={errors.password}
+              {...register('password')}
+            />
           </Stack>
           
-          <PrimaryButton text="Entrar" mt="6" size="lg" type="submit" />
-          
+          <PrimaryButton text="Entrar" mt="6" size="lg" type="submit" isLoading={formState.isSubmitting} />
         </Flex>
       
       </Flex>
