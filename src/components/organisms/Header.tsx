@@ -1,6 +1,6 @@
 import { Text, HStack } from "@chakra-ui/react";
-import { Flex, useBreakpointValue, IconButton, Icon, Box, Avatar, Input } from "@chakra-ui/react";
-import { RiMenuLine, RiNotificationLine, RiSearch2Line, RiUserAddLine } from "react-icons/ri";
+import { Flex, useBreakpointValue, IconButton, Icon, Box, Avatar } from "@chakra-ui/react";
+import { RiMenuLine, RiNotificationLine, RiUserAddLine } from "react-icons/ri";
 import { useSidebarDrawer } from "../../contexts/SidebarDrawerContext";
 import { SearchBox } from "../molecules/SearchBox";
 
@@ -22,6 +22,7 @@ export function Header() {
           px="6"
           align="center"
         >
+            {/* ICON MENU MOBILE */}
             {!isWideVersion && (
                 <IconButton
                     aria-label="Open navigation"
@@ -34,6 +35,7 @@ export function Header() {
                 </IconButton>
             )}
 
+            {/* LOGO */}
             <Text as="a"
                 href="/dashboard"
                 fontSize={['2xl', '3xl']}
@@ -44,8 +46,10 @@ export function Header() {
                 <Text as="span" ml="1" color="pink.500">.</Text>
             </Text>
 
+            {/* BUSCA - MOLECULA */}
             {isWideVersion && <SearchBox/> }
 
+            {/* PERFIL */}
             <Flex
                 align="center"
                 ml="auto"
