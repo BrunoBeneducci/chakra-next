@@ -3,7 +3,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { PrimaryButton } from '../components/atoms/Button';
 import { Input } from '../components/atoms/Input';
-import { Flex, Stack, Button } from '@chakra-ui/react';
+import { Flex, Stack } from '@chakra-ui/react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
